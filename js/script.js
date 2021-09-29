@@ -15,24 +15,49 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 let studentsPerPage = 9;
-let html = ''
 
-for (let i = 0; i < data.length; i++){
-   let studentData = data[i];
-   html = '
-   <h2>${studentData.name}</h2>
-   ';
-}
-console.log(html);
+function showPage(list, page) {
+   const startIndex = (page * studentsPerPage) - studentsPerPage;
+   const endIndex = page * studentsperPage;
+   let studentList = document.querySelector(".student-list");
+   
+   studentList.innerHTML = ''; 
 
-/*function showPage() {};
+for (let i = 0; i < list.length; i++){
+   if (i >= startIndex && i < endIndex){
+      const studentItem = "
+         <li class="student-item cf">
+         <div class="student-details">
+         <  img class="avatar" src="https://randomuser.me/api/portraits/women/25.jpg" alt="Profile Picture">
+            <h3>Ethel Dean</h3>
+            <span class="email">ethel.dean@example.com</span>
+         </div>
+         <div class="joined-details">
+            <span class="date">Joined 12-15-2005</span>
+         </div>
+      </li>
+         ";
+      studentList.insertAdjacentHTML('beforeend', studentItem);
+      }
+   }
+};
 
+   // let studentData = list[i];
+   // let firstName = studentData.name.first;
+   // let lastName = studentData.name.last;
+   // let fullName = '${firstName}${lastName}';
+   // let email = studentData.email;
+   // let registerDate = studentData.registered.date;
+   // let registerAge = studentData.registered.age;
+   // let picture = studentData.picture;
 
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
-
+function addPagination(){
+   
+};
 
 
 // Call functions
