@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "Unit-2--Data-Pagination-and-Filtering",
+			"path": "../../Unit2_Data-Pagination-and-Filtering/Unit-2--Data-Pagination-and-Filtering"
+		},
+		{
+			"name": "img",
+			"path": "../../../../Downloads/data-pagination-and-filtering-v1/img"
+		},
+		{
+			"name": "examples",
+			"path": "../../../../Downloads/data-pagination-and-filtering-v1/examples"
+		},
+		{
+			"name": "css",
+			"path": "../../../../Downloads/data-pagination-and-filtering-v1/css"
+		},
+		{
+			"name": "js",
+			"path": "../../../../Downloads/data-pagination-and-filtering-v1/js"
+		}
+	],
+	"settings": {}
+}
