@@ -17,8 +17,11 @@ This function will create and insert/append the elements needed to display a "pa
 let studentsPerPage = 9;
 
 function showPage(list, page) {
+// Create two variables to store the start index and the end index of the list items to be displayed on the given page. 
    const startIndex = (page * studentsPerPage) - studentsPerPage;
-   const endIndex = page * studentsperPage;
+   const endIndex = page * studentsPerPage;
+
+// Select the UL element with a class of student-list and assign its value to a variable.   
    let studentList = document.querySelector(".student-list");
    
    studentList.innerHTML = ""; 
@@ -41,14 +44,46 @@ function showPage(list, page) {
          studentList.insertAdjacentHTML("beforeend", studentItem);
       }
    }
-};
+}
 
-{/* 
+/* 
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
-*/} 
+*/ 
 
-function addPagination(){};
+function addPagination(list){
+// Create a variable to store the value of the number of pagination buttons needed.
+   const buttonPerPage = Math.ceil(list.length / studentsPerPage);
 
+// Select the UL element with a class of link-list and assign its value to a variable.
+   const linkList = document.querySelector(".link-list");
 
+   linkList.innerHTML = "";
+
+   for (let i = 0; i < buttonPerPage; i++){
+      let li = document.createElement("li");
+      let button = document.createElement("button");
+
+      button.type = "button";
+      button.innerText = `${i + 1}`;
+      li.append(button);
+
+      //Insert the elements you have created to the link-list variable you created earlier.
+      linkList.insertAdjacentElement("beforeend", li);
+
+      // Select the first pagination button and give it a class name of active.
+      linkList.firstElementChild.firstElementChild.className = "active";
+
+      linkList.addEventListener("click", function(e) {
+         e.preventDefault();
+         if (e.target.tagName === "BUTTON") {
+            document.querySelector('.active').className = "";
+            e.target.className = "active";
+            showPage(list, e.target.textContent);
+         }
+      }); 
+   };
+};
 // Call functions
+showPage(data, 1);
+addPagination(data);
