@@ -30,12 +30,12 @@ function showPage(list, page) {
          const studentItem = `  
             <li class="student-item cf">
             <div class="student-details">
-               <img class="avatar" src="https://randomuser.me/api/portraits/women/25.jpg" alt="Profile Picture">
-               <h3>Ethel Dean</h3>
-               <span class="email">ethel.dean@example.com</span>
+               <img class="avatar" src="${list[i].picture.thumbnail}" alt="Profile Picture">
+               <h3>${list[i].name.first} ${list[i].name.last}</h3>
+               <span class="email">${list[i].email}</span>
             </div>
             <div class="joined-details">
-               <span class="date">Joined 12-15-2005</span>
+               <span class="date">${list[i].registered.date}</span>
             </div>
             </li>
                `;
@@ -63,7 +63,7 @@ function addPagination(list) {
       // const button = document.createElement("button");
       li = `
       <li>
-      <button type="button">1</button>
+      <button type="button">${i + 1}</button>
       </li>`;
 
       //Insert the elements you have created to the link-list variable you created earlier.
@@ -89,5 +89,4 @@ function addPagination(list) {
 }
 // Call functions
 showPage(data, 1);
-addPagination(data);
 addPagination(data);
