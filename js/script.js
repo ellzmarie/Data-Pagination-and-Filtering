@@ -23,7 +23,6 @@ function showPage(list, page) {
 
 // Select the UL element with a class of student-list and assign its value to a variable.   
    let studentList = document.querySelector(".student-list");
-   
    studentList.innerHTML = ""; 
 
    for (let i = 0; i < list.length; i++){
@@ -51,39 +50,44 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */ 
 
-function addPagination(list){
+function addPagination(list) {
 // Create a variable to store the value of the number of pagination buttons needed.
    const buttonPerPage = Math.ceil(list.length / studentsPerPage);
-
 // Select the UL element with a class of link-list and assign its value to a variable.
-   const linkList = document.querySelector(".link-list");
+   let linkList = document.querySelector(".link-list");
 
    linkList.innerHTML = "";
-
-   for (let i = 0; i < buttonPerPage; i++){
+   if (buttonPerPage > 0) {
+   for (let i = 0; i < buttonPerPage; i++) {
       let li = document.createElement("li");
-      let button = document.createElement("button");
-
-      button.type = "button";
-      button.innerText = `${i + 1}`;
-      li.append(button);
+      // const button = document.createElement("button");
+      li = `
+      <li>
+      <button type="button">1</button>
+      </li>`;
 
       //Insert the elements you have created to the link-list variable you created earlier.
-      linkList.insertAdjacentElement("beforeend", li);
-
+      linkList.insertAdjacentHTML("beforeend", li);
+   }
       // Select the first pagination button and give it a class name of active.
-      linkList.firstElementChild.firstElementChild.className = "active";
+   let firstButton = linkList.firstElementChild.firstElementChild;
+   firstButton.className = "active";
 
-      linkList.addEventListener("click", function(e) {
-         e.preventDefault();
-         if (e.target.tagName === "BUTTON") {
-            document.querySelector('.active').className = "";
-            e.target.className = "active";
-            showPage(list, e.target.textContent);
+      linkList.addEventListener("click", (e) => {
+         let buttonClick = e.target;
+         if (buttonClick.tagName === "BUTTON") {
+            let activeButton = document.querySelector(".active");
+            activeButton.className = "";
+
+            buttonClick.className = "";
+
+            buttonClick.className = "active";
+            showPage(list, buttonClick.textContent);
          }
       }); 
-   };
-};
+   }
+}
 // Call functions
 showPage(data, 1);
+addPagination(data);
 addPagination(data);
